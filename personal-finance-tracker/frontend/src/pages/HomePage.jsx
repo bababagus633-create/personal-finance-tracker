@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import CurrencyTable from '../components/CurrencyTable';
 
 export default function HomePage() {
@@ -20,7 +20,7 @@ export default function HomePage() {
         setSummary(JSON.parse(cached));
       }
 
-      const res = await axios.get('/api/transactions/summary');
+      const res = await api.get('/transactions/summary');
       if (res.data.success) {
         setSummary(res.data.data);
         localStorage.setItem('finance_summary', JSON.stringify(res.data.data));

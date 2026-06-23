@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/axios';
 import TransactionForm from '../components/TransactionForm';
 import TransactionTable from '../components/TransactionTable';
 
@@ -17,7 +17,7 @@ export default function AdminPage() {
         setTransactions(JSON.parse(cached));
       }
 
-      const res = await axios.get('/api/transactions');
+      const res = await api.get('/transactions');
       if (res.data.success) {
         setTransactions(res.data.data);
         localStorage.setItem('finance_transactions', JSON.stringify(res.data.data));
@@ -45,9 +45,9 @@ export default function AdminPage() {
     try {
       setError(null);
       if (editingData) {
-        await axios.put(`/api/transactions/${editingData.id}`, data);
+        await api.put(`/transactions/${editingData.id}`, data);
       } else {
-        await axios.post('/api/transactions', data);
+        await api.post('/transactions', data);
       }
       setEditingData(null);
       fetchTransactions();
@@ -62,7 +62,7 @@ export default function AdminPage() {
     if (!window.confirm('Yakin ingin menghapus transaksi ini?')) return;
     try {
       setError(null);
-      await axios.delete(`/api/transactions/${id}`);
+      await api.delete(`/transactions/${id}`);
       fetchTransactions();
     } catch (err) {
       setError('Gagal menghapus transaksi.');

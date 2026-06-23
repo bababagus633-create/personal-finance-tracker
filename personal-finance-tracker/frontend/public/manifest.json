@@ -1,0 +1,20 @@
+{
+  "name": "FinanceTrack",
+  "short_name": "FinanceTrack",
+  "description": "Personal Finance Tracker - Kelola keuangan pribadi Anda",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0a1e",
+  "theme_color": "#7c5af2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512 any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "productivity"],
+  "lang": "id"
+}

@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#0f0a1e] text-slate-100 min-h-screen;
+  }
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  .glass-card-dark {
+    @apply bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  .btn-primary {
+    @apply bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 shadow-lg shadow-brand-900/50 hover:shadow-brand-700/40 hover:-translate-y-0.5;
+  }
+  .btn-danger {
+    @apply bg-rose-600/80 hover:bg-rose-500 text-white font-semibold px-4 py-2 rounded-xl transition-all duration-200 hover:-translate-y-0.5;
+  }
+  .btn-secondary {
+    @apply bg-white/10 hover:bg-white/20 border border-white/20 text-slate-200 font-semibold px-4 py-2 rounded-xl transition-all duration-200;
+  }
+  .input-field {
+    @apply w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all duration-200;
+  }
+  .badge-income {
+    @apply inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+  .badge-expense {
+    @apply inline-flex items-center gap-1.5 bg-rose-500/20 text-rose-400 border border-rose-500/30 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-400 to-purple-300 bg-clip-text text-transparent;
+  }
+  .glow-brand {
+    box-shadow: 0 0 30px rgba(124, 90, 242, 0.25);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply bg-brand-700/60 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-brand-600/80; }
+
+/* Animations */
+.fade-in { animation: fadeIn 0.4s ease-out; }
+.slide-up { animation: slideUp 0.4s ease-out; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Gradient orb background */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-1 { width: 600px; height: 600px; background: #7c5af2; top: -200px; left: -200px; }
+.orb-2 { width: 400px; height: 400px; background: #a855f7; bottom: -100px; right: -100px; }

@@ -13,7 +13,13 @@ const DB_PATH = path.join(__dirname, 'database.db');
 // ─── Security Middleware ─────────────────────────────────────────────────────
 app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:4173', /^http:\/\/192\.168\./],
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:4173',
+    /^http:\/\/192\.168\./,
+    'https://personal-finance-tracker-five-pearl.vercel.app',
+    /\.vercel\.app$/
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type']
 }));
